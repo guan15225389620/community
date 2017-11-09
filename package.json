@@ -1,0 +1,28 @@
+{
+  "name": "community",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "body-parser": "~1.17.1",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.3",
+    "ejs": "~2.5.6",
+    "ejs-mate": "^2.3.0",
+    "express": "~4.15.2",
+    "express-session": "^1.15.5",
+    "formidable": "^1.1.1",
+    "lodash": "^4.17.4",
+    "markdown-it": "^8.4.0",
+    "moment": "^2.18.1",
+    "mongoose": "^4.11.12",
+    "morgan": "~1.8.1",
+    "nodemailer": "^4.1.0",
+    "nodemailer-smtp-transport": "^2.7.4",
+    "serve-favicon": "~2.4.2",
+    "validator": "^8.2.0",
+    "xss": "^0.3.4"
+  }
+}

@@ -1,0 +1,67 @@
+<div class="post" ng-controller="articlePostController">
+    <div class="container">
+        <div class="row">
+            <div class="aw-content-wrap clearfix">
+                <div class="col-sm-12 col-md-9 aw-main-content">
+                    <ul class="nav nav-tabs aw-nav-tabs active hidden-xs">
+                        <h2 class="hidden-xs"><i class="fa fa-file"></i> 发起</h2>
+                    </ul>
+
+                    <div class="aw-mod aw-explore-list">
+                        <div class="mod-body">
+                            <form name="postForm" novalidate>
+                                <div class="form-group">
+                                    <label for="category">分类：</label>
+                                    <select id="category" name="category" ng-model="category" class="form-control" required>
+                                        <option value="">请选择</option>
+                                        <% categories.forEach(function(category){ %>
+                                        <option value="<%= category._id %>"><%= category.name %></option>
+                                        <% }) %>
+                                    </select>
+                                    <span ng-show="postForm.category.$dirty && postForm.category.$invalid" class="error">
+                                        <span>
+                                            <i class="fa fa-info-circle"></i>
+                                            必须选择分类
+                                        </span>
+                                    </span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="title">标题：</label>
+                                    <input type="text" class="form-control" id="title" placeholder="请输入标题" ng-model="title" name="title" required minlength="2"
+                                        maxlength="50">
+                                    <span class="error" ng-show="postForm.title.$dirty && postForm.title.$invalid">
+                                        <span ng-show="postForm.title.$error.required">
+                                            <i class="fa fa-info-circle"></i>
+                                            必填, 2-50字符之间
+                                        </span>
+                                    </span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="content">内容：</label>
+                                    <div>
+                                        <textarea name="content" class="form-control" id="content" cols="30" rows="10" placeholder="请输入发布的内容"></textarea>
+                                    </div>
+                                    <div>
+                                        <span ng-show="isEmpty && !isFirst" class="error">
+                                            <span>
+                                                <i class="fa fa-info-circle"></i>
+                                                必填
+                                            </span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary pull-right" ng-disabled="postForm.$invalid || isEmpty" ng-click="post()">发布</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 侧边栏 -->
+                <div class="col-sm-12 col-md-3 aw-side-bar hidden-xs hidden-sm">
+
+                </div>
+                <!-- end 侧边栏 -->
+            </div>
+        </div>
+    </div>
+</div>

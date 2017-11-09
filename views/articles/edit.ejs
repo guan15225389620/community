@@ -1,0 +1,68 @@
+<div class="edit" ng-controller="articleEditController">
+    <div class="container">
+        <div class="row">
+            <div class="aw-content-wrap clearfix">
+                <div class="col-sm-12 col-md-9 aw-main-content">
+                    <ul class="nav nav-tabs aw-nav-tabs active hidden-xs">
+                        <h2 class="hidden-xs"><i class="fa fa-file"></i> 编辑</h2>
+                    </ul>
+
+                    <div class="aw-mod aw-explore-list">
+                        <div class="mod-body">
+                            <form name="editForm" novalidate>
+                                <input type="hidden" ng-init="id='<%=article._id%>'" ng-model="id">
+                                <div class="form-group">
+                                    <label for="category">分类：</label>
+                                    <select id="category" name="category" ng-init="category='<%=article.category%>'" ng-model="category" class="form-control" required>
+                                        <option value="">请选择</option>
+                                        <% categories.forEach(function(c){ %>
+                                            <option value="<%= c._id %>"><%= c.name %></option>
+                                        <% }) %>
+                                    </select>
+                                    <span ng-show="editForm.category.$dirty && editForm.category.$invalid" class="error">
+                                        <span>
+                                            <i class="fa fa-info-circle"></i>
+                                            必须选择分类
+                                        </span>
+                                    </span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="title">标题：</label>
+                                    <input type="text" class="form-control" id="title" placeholder="请输入标题" ng-init="title='<%=article.title%>'" ng-model="title" name="title" required minlength="2"
+                                        maxlength="50">
+                                    <span class="error" ng-show="editForm.title.$dirty && editForm.title.$invalid">
+                                        <span ng-show="editForm.title.$error.required">
+                                            <i class="fa fa-info-circle"></i>
+                                            必填, 2-50字符之间
+                                        </span>
+                                    </span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="content">内容：</label>
+                                    <div>
+                                        <textarea name="content" class="form-control" id="content" cols="30" rows="10" placeholder="请输入发布的内容" required><%=article.content%></textarea>
+                                    </div>
+                                    <div>
+                                        <span class="error" ng-show="!isEmpty">
+                                            <span>
+                                                <i class="fa fa-info-circle"></i>
+                                                必填
+                                            </span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary pull-right" ng-disabled="editForm.$invalid || !isEmpty" ng-click="edit()">编辑</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 侧边栏 -->
+                <div class="col-sm-12 col-md-3 aw-side-bar hidden-xs hidden-sm">
+
+                </div>
+                <!-- end 侧边栏 -->
+            </div>
+        </div>
+    </div>
+</div>

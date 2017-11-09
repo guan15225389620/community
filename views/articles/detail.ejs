@@ -1,0 +1,75 @@
+<div class="detail" ng-controller="articleDetailController">
+    <div class="container">
+        <div class="row">
+            <div class="aw-content-wrap clearfix">
+                <div class="col-sm-12 col-md-9 aw-main-content">
+                    <ul class="nav nav-tabs aw-nav-tabs active hidden-xs">
+                        <h2 class="hidden-xs"><i class="fa fa-file"></i> 文章详情</h2>
+                    </ul>
+
+                    <div class="aw-mod aw-explore-list">
+                        <div class="mod-body">
+                            <% include article-detail %>
+                            <% include article-reply-list %>
+                            <% include article-reply %>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 侧边栏 -->
+                <div class="col-sm-12 col-md-3 aw-side-bar hidden-xs hidden-sm">
+
+                </div>
+                <!-- end 侧边栏 -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // index是获取的textarea的索引，value是获取的textarea的元素本身
+    // 把每一个textarea都和simplemde关联
+    $('textarea.reply_editor').each(function (index, value) {
+        // console.log(value)
+        var editor = new SimpleMDE({
+            element: value,
+            status: [],
+        })
+        // this在此处代表当前循环的元素textarea
+        var $el = $(this);
+        // 通过simpleMDE插件的render方法把textarea渲染成富文本simpleMDE
+        editor.render(this);
+        //绑定editor
+        $(this).data('editor', editor);
+    })
+
+    function showReply2Page(target) {
+        var url = $(target).data('url').split('/');
+        // console.log($(target).data('url'));
+        // console.log(url)
+        // 获取二级回复的父级ID
+        var parentid = url[3];
+        // 获取的是页码
+        var page = url[4];
+
+        // $(`div.aw-item[data-id=${parentid}]`)
+        // 选择的是article-reply-list.ejs中带有类名为aw-item，并且带有自定义属性data-id的，并且parentid为某个具体的值的div元素
+        var commentItem = $(`div.aw-item[data-id=${parentid}]`).find('.aw-comment-box')
+
+        $.ajax({
+            type: 'POST',
+            // url: `/articles/showReply2/${parentid}/${page}`,
+            url: $(target).data('url'),
+            success: function (res) {
+                console.log(res)
+                // 先把原来容器中的非form元素的所有子元素删除掉，再添加返回的HTML代码片段
+                commentItem.find('.aw-comment-list').children().not('form').remove();
+                commentItem.find('.aw-comment-list').prepend(res);
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        })
+    }
+
+</script>

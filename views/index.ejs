@@ -1,0 +1,123 @@
+<div class="index">
+    <div class="container">
+        <div class="row">
+            <div class="aw-content-wrap clearfix">
+                <div class="col-sm-12 col-md-9 aw-main-content">
+                    <!-- tab切换 -->
+                    <ul class="nav nav-tabs aw-nav-tabs active hidden-xs">
+                        <% categories.forEach(function(c, index, arr){ %>
+                            <li class="<%= currentCategory == c._id ? 'active': '' %>">
+                                <a href="/?category=<%=c._id%>"><%=c.name%></a>
+                            </li>
+                        <%})%>
+                        <h2 class="hidden-xs"><i class="fa fa-list"></i> 发现</h2>
+                    </ul>
+                    <!-- end tab切换 -->
+
+                    <div class="aw-mod aw-explore-list">
+                        <div class="mod-body">
+                            <div class="aw-common-list">
+                                <% articles.forEach(function(a){ %>
+                                <div class="aw-item">
+                                    <a class="aw-user-name hidden-xs" href="/users/center/<%=a.userId.name%>">
+                                        <img src="<%=a.userId.logo%>" alt="">
+                                    </a>
+                                    <div class="aw-question-content">
+                                        <h4>
+                                            <a href="/articles/detail/<%=a._id%>"><%=a.title%></a>
+                                        </h4>
+                                        <div class="pull-right hidden-xs contribute">
+                                            <%if(!user){%>
+                                            <span class="pull-right text-color-999">贡献</span>	    
+                                            <a class="aw-user-name" href="/users/center/<%=a.userId.name%>">
+                                                <img src="<%=a.userId.logo%>" alt="">
+                                            </a>
+                                            <%} else {%>
+                                            <a class="aw-user-name" href="/reply">回复</a>
+                                            <%}%>
+                                        </div>
+
+                                        <p>
+                                            <a class="aw-question-tags" href="#">
+                                                <%=a.category.name%>
+                                            </a> 
+                                            •
+                                            
+                                            <%if(a.lastReplyId){%>
+                                                <a href="#" class="aw-user-name">
+                                                有最后的回复人
+                                                </a>
+                                            <%} else {%>
+                                                <a href="/users/center/<%=a.userId.name%>" class="aw-user-name">
+                                                <%=a.userId.name%>
+                                                </a>
+                                            <%}%>
+                                            
+                                            回复了问题 
+                                            <span class="text-color-999">
+                                            • <%=a.userId.followCount%> 人关注 • <%=a.replyCount%> 个回复 • <%=a.browerCount%> 次浏览 • <%=a.createTimeFormat %>
+                                            </span>
+                                            <!-- •  
+                                            <span class="text-color-999 related-topic hide">
+                                                 来自相关话题
+                                            </span> -->
+                                        </p>
+                                    </div>
+                                </div>
+                                <%})%>
+                            </div>
+                        </div>
+
+                        <%if(articles.length > 0){%>
+                        <div class="mod-footer">
+                            <div class="page-control">
+                                <ul class="pagination pull-right">
+                                    <%if(currentPage != 1){%>
+                                        <li><a href="/1/?category=<%=currentCategory%>">&lt;&lt;</a></li>
+                                        <li><a href="/<%=currentPage-1%>/?category=<%=currentCategory%>">&lt;</a></li>
+                                    <%}%>
+                                    <%pages.forEach(function(p){%>
+                                        <li class="<%= currentPage == p ? 'active' : '' %>"><a href="/<%=p%>/?category=<%=currentCategory%>"><%=p%></a></li>
+                                    <%})%>
+                                    <%if(currentPage != totalPage && totalPage != 0){%>
+                                        <li><a href="/<%=currentPage+1%>/?category=<%=currentCategory%>">&gt;</a></li>
+                                        <li><a href="/<%=totalPage%>/?category=<%=currentCategory%>">&gt;&gt;</a></li>
+                                    <%}%>
+                                </ul>
+                            </div>
+                        </div>
+                        <%}%>
+                    </div>
+                </div>
+
+                <!-- 侧边栏 -->
+                <div class="col-sm-12 col-md-3 aw-side-bar hidden-xs hidden-sm">
+                    <div class="aw-mod aw-text-align-justify">
+                        <div class="mod-head">
+                            <a href="#" class="pull-right">更多 &gt;</a>
+                            <h3>热门用户</h3>
+                        </div>
+                        <div class="mod-body">
+                            <div class="aw-common-list">
+                                <div class="aw-item">
+                                    <a class="aw-user-name hidden-xs" href="#"><img src="/images/default_logo.jpg" alt=""></a>
+                                    <div class="aw-question-content">
+                                        <h4>
+                                            <a href="#" class="aw-user-name">admin</a>
+                                        </h4>
+                                        <p>
+                                            <span class="text-color-999">积分 2 发表 1 </span>
+                                        </p>
+                                    </div>
+                                </div>
+                                ......
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end 侧边栏 -->
+            </div>
+        </div>
+    </div>
+</div>

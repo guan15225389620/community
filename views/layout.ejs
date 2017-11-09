@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html ng-app="community" ng-controller="mainController" ng-cloak>
+
+<head>
+  <title>
+    <%= title %> -- 社区问答</title>
+  <link rel="shortcut icon" href="/favicon.png" type="image/x-icon" />
+  <!-- 引入bootstrap样式 -->
+  <link rel="stylesheet" href="/libs/bootstrap/css/bootstrap.min.css">
+  <!-- bootstrap兼容性处理 -->
+  <!--[if lt IE 9]>
+          <script src="/libs/html5shiv.min.js"></script>
+          <script src="/libs/respond.min.js"></script>
+        <![endif]-->
+  <!-- 自定义样式 -->
+  <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+  <link rel='stylesheet' href="/stylesheets/common.css" />
+  <link rel='stylesheet' href="/stylesheets/style.css" />
+  <!-- 引入jquery -->
+  <script src="/libs/jquery.js"></script>
+  <!-- bootstrap核心文件 -->
+  <script src="/libs/bootstrap/js/bootstrap.min.js"></script>
+  <!-- 引入angular -->
+  <script src="/libs/angular/angular.min.js"></script>
+  <script src="/libs/angular/angular-cookies.min.js"></script>
+  <script src="/javascripts/main.js"></script>
+  <script src="/libs/layer/layer.js"></script>
+  <!-- 引入simpleMDE编辑器 -->
+  <link rel="stylesheet" href="/libs/simplemde/simplemde.min.css">
+  <script src="/libs/simplemde/simplemde.min.js"></script>
+  <!-- 引入百度上传插件 -->
+  <link rel="stylesheet" href="/libs/webuploader/webuploader.css">
+  <script src="/libs/webuploader/webuploader.js"></script>
+  <!-- 引入jquery uploadify上传插件 -->
+  <link rel="stylesheet" href="/libs/uploadify/uploadify.css">
+  <script src="/libs/uploadify/jquery.uploadify.js"></script>
+</head>
+
+<body>
+  <% include header.ejs %>
+  <div class="container">
+    <%- body %>
+  </div>
+</body>
+
+</html>

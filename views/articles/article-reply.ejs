@@ -1,0 +1,19 @@
+<% if(user){%>
+<div class="article-reply">
+    <div style="padding:50px 0;">
+        <a href="/users/center/<%=user.name%>" class="aw-user-img aw-border-radius-5 pull-left">
+            <img src="<%=user.logo%>" width="40" height="40">
+            <%=user.name%>
+        </a>
+    </div>
+    <div>
+        <form novalidate>
+            <div>
+                <input type="hidden" id="articleid" ng-model="articleid" value="<%=article._id%>">
+                <textarea class="reply_editor" cols="30" rows="10"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary pull-right" ng-click="topReply($event)">回复</button>
+        </form>
+    </div> 
+</div>
+<%}%>

@@ -1,0 +1,227 @@
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background: whitesmoke;
+  padding: 0;
+}
+
+a {
+  color: #499ef3 !important;
+}
+
+.boxheader{
+  background: #4E3773;
+  margin-bottom: 20px;
+}
+
+.boxheader .navbar{
+  margin-bottom: 0;
+  border-radius: 0;
+  background:transparent;
+  border: none;
+}
+
+.boxheader .navbar-brand img{
+  width: 38px;
+}
+
+.boxheader .navbar a{
+  color: white !important;
+}
+
+.container{
+  width: 1200px;
+  margin: 0 auto;
+}
+
+.navbar-brand img{
+  margin-top: -8px;
+}
+
+.register .panel, .forget .panel, .reset .panel, .success .panel{
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.errbox .panel{
+  padding-bottom: 50px;
+}
+
+.register .logo, .forget .logo, .reset .logo, .success .logo{
+  text-align: center;
+}
+
+.register .logo span, .forget .logo span, .reset .logo span, .success .logo span{
+  display: block;
+  font-size: 16px;
+  font-weight: bolder;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.register .panel-heading, .forget .panel-heading, .reset .panel-heading, .success .panel-heading, .errbox .panel-heading{
+  background-color: white;
+}
+
+.register form, .forget form, .reset form, .success form{
+  width: 300px;
+  display: block;
+  margin: 0 auto;
+}
+
+.register form .error, .login form .error, .forget form .error, .reset form .error, .success form .error, .post form .error, .article-reply .error, .edit form .error{
+  color: red;
+  background-color: #FFEAEA;
+  border: 1px solid #ccc;
+  padding: 5px;
+  display: inline-block;
+  margin-top: 3px;
+  border-radius: 3px;
+}
+
+.register button, .forget button, .reset button, .success button{
+  width: 100%;
+}
+
+.success .tip{
+  text-align: center;
+  font-size: 20px;
+}
+
+.login .boxlogin{
+  display: flex;
+  padding-top:100px;
+  padding-bottom: 100px;
+}
+
+.login .loginleft{
+  width: 55%;
+  border-right: 1px solid #e7e7e7;
+}
+
+.login .loginleft .title{
+  text-align: center;
+}
+
+.login .loginleft .title span{
+  display: block;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.login .loginleft form{
+  width: 300px;
+  display: block;
+  margin: 0 auto;  
+}
+
+.login .loginleft form button{
+  width: 100px;
+  margin: 0 auto;
+}
+
+.login .loginright{
+  width: 40%;
+  text-align: center;
+  padding-top: 100px;
+}
+
+.login .loginright h2{
+  font-weight: normal;
+  font-size: 14px;
+}
+
+.login .loginright div{
+  margin-top: 20px;
+}
+
+.login .loginright div img{
+  width: 170px;
+}
+
+.login .panel-footer{
+  background-color: white;
+}
+
+.boxfooter{
+  border-top: 1px solid #e7e7e7;
+  padding-top: 20px;
+  color: #999;
+}
+
+.boxfooter a{
+  color: #999 !important;
+}
+
+.boxfooter .copyright{
+  margin-top: 20px;
+  text-align: center;
+}
+
+.boxheader .navbar .open a{
+  color: #499ef3 !important;
+}
+
+.index .container, .post .container, .edit .container{
+  margin-bottom: 20px;
+}
+
+.index .mod-footer .active a, .detail .mod-footer .active a{
+  color: white !important;
+}
+
+.index .nav-tabs a{
+  color: #333 !important;
+}
+
+.post form, .edit form{
+  margin-top: 20px;
+}
+
+.post form button, .edit form button{
+  width: 100px;
+}
+
+.detail .operate .aw-add-comment:hover{
+  color: white !important;
+}
+
+form button{
+  margin-top: 5px;
+}
+
+.detail .category{
+  background-color: #499ef3;
+  color: white !important;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.hideReply2{
+  display: none;
+}
+
+.aw-comment-box {
+  display:none;
+}
+
+.setting .userInfo, .setting .upload{
+  float: left;
+  /* width: 200px;
+  border: 1px solid red; */
+  /* height: 100px; */
+}
+
+.setting .userInfo{
+  width: 500px;
+}
+
+.setting .upload{
+  width: 300px;
+}
+
+.uploader-list {
+  width: 100%;
+  overflow: hidden;
+}
+
+

@@ -1,0 +1,52 @@
+<div class="login" ng-controller="loginController">
+    <div class="container">
+        <div class="panel panel-default">
+            <div class="panel-body boxlogin">
+                <div class="loginleft">
+                    <div class="title">
+                        <img src="/images/bootstrap-logo.png" alt="bootstrap-logo.png">
+                        <span>基于nodeJS的社区系统</span>
+                    </div>
+                    <form name="loginForm" novalidate>
+                        <div class="form-group">
+                            <label for="name">账号/邮箱：</label>
+                            <input type="text" class="form-control" id="name" placeholder="请输入账号/邮箱" name="name" required ng-model="name">
+                            <span class="error" ng-show="loginForm.name.$dirty && loginForm.name.$invalid">
+                                <span ng-show="loginForm.name.$error.required">必填</span>
+                            </span>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">密码：</label>
+                            <input type="password" class="form-control" id="password" placeholder="请输入密码" name="password" required ng-model="password">
+                            <span class="error" ng-show="loginForm.password.$dirty && loginForm.password.$invalid">
+                                <span ng-show="loginForm.password.$error.required">必填</span>
+                            </span>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" ng-model="remember"> 记住我 
+                            </label>
+                            <a href="/users/forget" class="pull-right">忘记密码</a>
+                        </div>
+                        <button type="submit" class="btn btn-primary" ng-disabled="loginForm.name.$invalid || loginForm.password.$invalid" ng-click="login()">登录</button>
+                    </form>
+                </div>
+                <div class="loginright">
+                    <h2>第三方登录</h2>
+                    <div>
+                        <img src="/images/weibo-login.png" alt="weibo-login.png">
+                    </div>
+                    <div>
+                        <img src="/images/qq-login.png" alt="qq-login.png">
+                    </div>
+                </div>
+            </div>
+            <div class="panel-footer">
+                还没有账号?
+                <a href="/users/register">立即注册</a> • 
+                <a href="/">游客访问</a> • 
+                <a href="javascript:void(0);">问答阅读</a> 
+            </div>
+        </div>
+    </div>
+</div>

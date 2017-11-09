@@ -1,0 +1,72 @@
+<!-- 不再使用模板 -->
+<% layout('') %>
+
+<% if( reply2.length > 0 ){%>
+<!-- 此页面是二级回复列表页面，注意不要使用模板 -->
+<div class="aw-mod aw-question-comment">
+    <!-- 二级回复的列表 -->
+    <% reply2.forEach(function(r){%>
+    <div class="aw-item">
+        <!--回复的头部 begin-->
+        <div class="mod-head">
+            <a href="/users/center/<%=r.userId.name%>" class="aw-user-img aw-border-radius-5 pull-right">
+                <img src="<%=r.userId.logo%>">
+            </a>
+            <div class="title">
+                <a href="/users/center/<%=r.userId.name%>" class="aw-user-name">
+                    <%=r.userId.name%>
+                </a>
+            </div>
+        </div>
+        <!--回复的头部 end-->
+
+        <!--回复的内容 begin-->
+        <div class="mod-body clearfix">
+            <div class="markitup-box">
+                <div class="markdown-text">
+                    <%- markdown(r.content) %>
+                </div>
+            </div>
+        </div>
+        <!--回复的内容 end-->
+
+        <div class="mod-footer">
+            <!--回复的操作按钮 begin-->
+            <div class="meta clearfix">
+                <span class="text-color-999 pull-right">
+                    <%=r.createTimeFormat%>
+                </span>
+                <!-- <span class="operate">
+                    <a class="aw-add-comment">
+                        <i class="fa fa-thumbs-o-up"></i>
+                        <b class="count">0</b>
+                    </a>
+                </span>
+                <span class="operate">
+                    <a href="javascript:void(0)" onclick="alert('1234')" data-article-id="<%=r.articleId%>" class="aw-add-comment">
+                        <i class="fa fa-comment-o"></i>
+                        <%=r.secondReplyCount%>条回复
+                    </a>
+                </span> -->
+            </div>
+            <!--回复的操作按钮 end-->
+        </div>
+    </div>
+    <%})%>
+
+    <!-- 二级回复的分页 -->
+    <div class="page-control" style="margin-bottom:50px;">
+        <ul class="pagination pull-right">
+            <%pages.forEach(function(p){%>
+                <li class="<%= currentPage == p ? 'active' : '' %>">
+                    <a href="javascript:void(0);" data-url="/articles/showReply2/<%=parentId%>/<%=p%>" onclick="showReply2Page(this)"><%=p%>
+                    </a>
+                </li>
+            <%})%>
+        </ul>
+    </div>
+
+</div>
+<%}%>
+    
+    

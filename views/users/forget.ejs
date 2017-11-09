@@ -1,0 +1,26 @@
+<div class="forget" ng-controller="forgetController">
+    <div class="container">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title logo">
+                    <img src="/images/bootstrap-logo.png" alt="bootstrap-logo.png">
+                    <span>忘记密码</span>
+                </h3>
+            </div>
+        
+            <div class="panel-body">
+                <form name="forgetForm" novalidate>
+                    <div class="form-group">
+                        <label for="email">邮箱：</label>
+                        <input type="email" class="form-control" id="email" placeholder="请输入邮箱" ng-model="email" name="email" required pattern="^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+">
+                        <span class="error" ng-show="forgetForm.email.$dirty && forgetForm.email.$invalid">
+                            <span ng-show="forgetForm.email.$error.required">必填</span>
+                            <span ng-show="forgetForm.email.$error.pattern">邮箱格式不正确，示例：xxx@163.com</span>
+                        </span>
+                    </div>
+                    <button type="submit" class="btn btn-primary" ng-click="forget()" ng-disabled="(forgetForm.email.$invalid)">发送邮件</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

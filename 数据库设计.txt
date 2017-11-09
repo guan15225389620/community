@@ -1,0 +1,51 @@
+﻿文章表(articles)
+_id		        ObjectId primaryKey
+category 	    ObjectId refance forginKey
+tags		    Array
+title		    String
+content		    String
+userId		    ObjectId ref
+browerCount	    Number
+favoriteCount	Number
+replyCount	    Number
+lastReplyId	    ObjectId ref
+status		    Number(0正常，1删除)
+createTime	    Date
+updateTime	    Date
+
+回复表(replies)
+_id		    ObjectId
+articleId	ObjectId ref
+content		String
+userId		ObjectId ref
+agreeCount	Number
+status		Number
+parentId	ObjectId ref
+createTime	Date
+updateTime	Date
+
+文章收藏表(favorites)
+_id		    ObjectId
+articleId	ObjectId ref
+userId		ObjectId ref
+createTime	Date
+
+关注表(follows)
+_id		        ObjectId
+userId		    ObjectId ref
+followUserId	ObjectId ref
+createTime	    Date
+
+文章类型(catetories)
+_id             ObjectId
+name            String
+
+
+
+
+
+
+
+
+
+

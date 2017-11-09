@@ -1,0 +1,104 @@
+<div class="aw-mod aw-question-comment">
+    <div class="mod-head">
+        <ul class="nav nav-tabs aw-nav-tabs active">
+            <h2 class="hidden-xs"><%=article.replyCount%>个回复</h2>
+        </ul>
+    </div>
+
+    <div class="mod-body aw-feed-list">
+        <!-- 一级回复开始循环 -->
+        <% topReply.forEach(function(reply){%>
+        <div class="aw-item" data-id="<%=reply._id%>">
+            <!--回复的头部 begin-->
+            <div class="mod-head">
+                <a href="/users/center/<%=reply.userId.name%>" class="aw-user-img aw-border-radius-5 pull-right">
+                    <img src="<%=reply.userId.logo%>">
+                </a>
+                <div class="title">
+                    <p>
+                        <a href="/users/center/<%=reply.userId.name%>" class="aw-user-name">
+                            <%=reply.userId.name%>
+                        </a>
+                        <% if(article.userId.name == reply.userId.name ){%>
+                        <span class="aw-user-name" style="background-color:#99cfff;color:white;padding:2px; border-radius: 2px">
+                                &nbsp;作者&nbsp;
+                        </span>
+                        <%}%>
+                    </p>
+                </div>
+            </div>
+            <!--回复的头部 end-->
+
+            <!--回复的内容 begin-->
+            <div class="mod-body clearfix">
+                <div class="markitup-box">
+                    <div class="markdown-text">
+                        <pre class="prettyprint">
+                            <code>
+                                <%- markdown(reply.content) %>
+                            </code>
+                        </pre>
+                    </div>
+                </div>
+            </div>
+            <!--回复的内容 end-->
+
+            <div class="mod-footer">
+                <!--回复的操作按钮 begin-->
+                <div class="meta clearfix">
+                    <span class="text-color-999 pull-right">
+                        <%=reply.createTimeFormat%>
+                    </span>
+                    <span class="operate">
+                        <a class="aw-add-comment">
+                            <i class="fa fa-thumbs-o-up"></i>
+                            <b class="count">0</b>
+                        </a>
+                    </span>
+                    <span class="operate">
+                        <a href="javascript:void(0)" ng-click="showReply2($event)" data-article-id="<%=reply.articleId%>" class="aw-add-comment">
+                            <i class="fa fa-comment-o"></i>
+                            <%=reply.secondReplyCount%>条回复
+                        </a>
+                    </span>
+                </div>
+                <!--回复的操作按钮 end-->
+
+                <!--二级回复的显示位置 begin-->
+                <div class="aw-comment-box" style="padding-bottom: 50px;">
+                    <div class="aw-comment-list">
+                        <form>
+                            <div>
+                                <textarea class="reply_editor" cols="30" rows="10"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary pull-right" ng-click="topReply($event)">二级回复</button>
+                        </form>
+                    </div>
+                </div>
+                <!--二级回复的显示位置 end-->
+            </div>
+        </div>
+        <%})%>
+    </div>
+
+    <%if(topReply.length > 0){%>
+    <div class="mod-footer">
+        <div class="page-control">
+            <ul class="pagination pull-right">
+                <%if(currentPage != 1){%>
+                    <li><a href="/articles/detail/<%=article._id%>/1">&lt;&lt;</a></li>
+                    <li><a href="/articles/detail/<%=article._id%>/<%=currentPage-1%>">&lt;</a></li>
+                <%}%>
+                <%pages.forEach(function(p){%>
+                    <li class="<%= currentPage == p ? 'active' : '' %>"><a href="/articles/detail/<%=article._id%>/<%=p%>"><%=p%></a></li>
+                <%})%>
+                <%if(currentPage != totalPage && totalPage != 0){%>
+                    <li><a href="/articles/detail/<%=article._id%>/<%=currentPage+1%>">&gt;</a></li>
+                    <li><a href="/articles/detail/<%=article._id%>/<%=totalPage%>">&gt;&gt;</a></li>
+                <%}%>
+            </ul>
+        </div>
+    </div>
+    <%}%>
+</div>
+

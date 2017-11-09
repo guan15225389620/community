@@ -1,0 +1,22 @@
+<div class="errbox">
+    <div class="container">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    错误页
+                </h3>
+            </div>
+            <div class="panel-body">
+                <p>错误：
+                    <%= message %>
+                </p>
+                <p>状态：
+                    <%= error.status %>
+                </p>
+                <p>堆栈：
+                    <%= error.stack %>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
